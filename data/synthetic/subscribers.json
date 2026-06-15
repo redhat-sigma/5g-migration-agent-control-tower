@@ -1,0 +1,358 @@
+{
+  "version": "1",
+  "subscribers": [
+    {
+      "subscriber_id": "SUB-10001",
+      "context": {
+        "subscriber_id": "SUB-10001",
+        "brand": { "brand_id": "1und1" },
+        "contract_type": "postpaid",
+        "account_status": "active",
+        "billing_ok": true,
+        "sim_status": "active",
+        "provisioning_state": "complete",
+        "network_ready": true,
+        "prior_migration_state": "none",
+        "device_model": "iPhone 14",
+        "is_5g_capable": true,
+        "requires_sim_swap": false,
+        "open_complaint": false,
+        "recent_case_count": 0,
+        "escalation_flag": false
+      },
+      "expected": {
+        "scenario": "tier_0_postpaid_straight_through",
+        "rules_outcome": "tier_0",
+        "final_tier": "tier_0",
+        "agent_reviewed": false,
+        "reason_codes": ["ELIGIBILITY_CONFIRMED", "AUTO_MIGRATE_READY"],
+        "recommended_action": "auto_migrate",
+        "notes": "Clean postpaid subscriber with full technical readiness."
+      }
+    },
+    {
+      "subscriber_id": "SUB-10002",
+      "context": {
+        "subscriber_id": "SUB-10002",
+        "brand": { "brand_id": "drillisch" },
+        "contract_type": "prepaid",
+        "account_status": "active",
+        "billing_ok": true,
+        "sim_status": "active",
+        "provisioning_state": "complete",
+        "network_ready": true,
+        "prior_migration_state": "none",
+        "device_model": "Samsung Galaxy S23",
+        "is_5g_capable": true,
+        "requires_sim_swap": false,
+        "open_complaint": false,
+        "recent_case_count": 0,
+        "escalation_flag": false
+      },
+      "expected": {
+        "scenario": "tier_0_prepaid_ready",
+        "rules_outcome": "tier_0",
+        "final_tier": "tier_0",
+        "agent_reviewed": false,
+        "reason_codes": ["ELIGIBILITY_CONFIRMED", "AUTO_MIGRATE_READY"],
+        "recommended_action": "auto_migrate",
+        "notes": "Prepaid subscriber ready for straight-through migration; brand is metadata only."
+      }
+    },
+    {
+      "subscriber_id": "SUB-10003",
+      "context": {
+        "subscriber_id": "SUB-10003",
+        "brand": { "brand_id": "webde" },
+        "contract_type": "business",
+        "account_status": "active",
+        "billing_ok": true,
+        "sim_status": "active",
+        "provisioning_state": "complete",
+        "network_ready": true,
+        "prior_migration_state": "none",
+        "device_model": "Google Pixel 8",
+        "is_5g_capable": true,
+        "requires_sim_swap": false,
+        "open_complaint": false,
+        "recent_case_count": 1,
+        "escalation_flag": false
+      },
+      "expected": {
+        "scenario": "tier_0_business_line",
+        "rules_outcome": "tier_0",
+        "final_tier": "tier_0",
+        "agent_reviewed": false,
+        "reason_codes": ["ELIGIBILITY_CONFIRMED", "AUTO_MIGRATE_READY"],
+        "recommended_action": "auto_migrate",
+        "notes": "Business line with minor resolved care history; rules treat as straight-through."
+      }
+    },
+    {
+      "subscriber_id": "SUB-20001",
+      "context": {
+        "subscriber_id": "SUB-20001",
+        "brand": { "brand_id": "1und1" },
+        "contract_type": "postpaid",
+        "account_status": "active",
+        "billing_ok": true,
+        "sim_status": "active",
+        "provisioning_state": "complete",
+        "network_ready": true,
+        "prior_migration_state": "none",
+        "device_model": "iPhone 13",
+        "is_5g_capable": true,
+        "requires_sim_swap": false,
+        "open_complaint": true,
+        "recent_case_count": 2,
+        "escalation_flag": false
+      },
+      "expected": {
+        "scenario": "ambiguous_open_complaint_vs_ready_network",
+        "rules_outcome": "ambiguous",
+        "final_tier": "tier_1",
+        "agent_reviewed": true,
+        "agent_suggested_tier": "tier_1",
+        "reason_codes": ["OPEN_COMPLAINT", "CONFLICTING_CARE_AND_PROVISIONING"],
+        "recommended_action": "assisted_review",
+        "notes": "Technical readiness is green but an open care complaint creates conflicting signals."
+      }
+    },
+    {
+      "subscriber_id": "SUB-20002",
+      "context": {
+        "subscriber_id": "SUB-20002",
+        "brand": { "brand_id": "1und1" },
+        "contract_type": "postpaid",
+        "account_status": "active",
+        "billing_ok": true,
+        "sim_status": "active",
+        "provisioning_state": "complete",
+        "network_ready": false,
+        "prior_migration_state": "none",
+        "device_model": "Samsung Galaxy A54",
+        "is_5g_capable": true,
+        "requires_sim_swap": false,
+        "open_complaint": false,
+        "recent_case_count": 0,
+        "escalation_flag": false
+      },
+      "expected": {
+        "scenario": "ambiguous_network_not_ready",
+        "rules_outcome": "ambiguous",
+        "final_tier": "tier_1",
+        "agent_reviewed": true,
+        "agent_suggested_tier": "tier_1",
+        "reason_codes": ["NETWORK_NOT_READY", "MIXED_READINESS_SIGNALS"],
+        "recommended_action": "assisted_review",
+        "notes": "Account and device look eligible but network readiness is not confirmed."
+      }
+    },
+    {
+      "subscriber_id": "SUB-20003",
+      "context": {
+        "subscriber_id": "SUB-20003",
+        "brand": { "brand_id": "drillisch" },
+        "contract_type": "postpaid",
+        "account_status": "active",
+        "billing_ok": true,
+        "sim_status": "active",
+        "provisioning_state": "complete",
+        "network_ready": true,
+        "prior_migration_state": "none",
+        "device_model": "iPhone 11",
+        "is_5g_capable": true,
+        "requires_sim_swap": true,
+        "open_complaint": false,
+        "recent_case_count": 0,
+        "escalation_flag": false
+      },
+      "expected": {
+        "scenario": "ambiguous_sim_swap_required",
+        "rules_outcome": "ambiguous",
+        "final_tier": "tier_1",
+        "agent_reviewed": true,
+        "agent_suggested_tier": "tier_1",
+        "reason_codes": ["SIM_SWAP_REQUIRED", "PARTIAL_MIGRATION_READINESS"],
+        "recommended_action": "assisted_review",
+        "notes": "Subscriber appears eligible but needs a SIM swap before migration can proceed."
+      }
+    },
+    {
+      "subscriber_id": "SUB-20004",
+      "context": {
+        "subscriber_id": "SUB-20004",
+        "brand": { "brand_id": "1und1" },
+        "contract_type": "postpaid",
+        "account_status": "active",
+        "billing_ok": true,
+        "sim_status": "active",
+        "provisioning_state": "pending_validation",
+        "network_ready": true,
+        "prior_migration_state": "none",
+        "device_model": "Xiaomi 13T",
+        "is_5g_capable": true,
+        "requires_sim_swap": false,
+        "open_complaint": false,
+        "recent_case_count": 0,
+        "escalation_flag": false
+      },
+      "expected": {
+        "scenario": "ambiguous_provisioning_pending_validation",
+        "rules_outcome": "ambiguous",
+        "final_tier": "tier_1",
+        "agent_reviewed": true,
+        "agent_suggested_tier": "tier_1",
+        "reason_codes": ["PROVISIONING_INCOMPLETE", "MIXED_READINESS_SIGNALS"],
+        "recommended_action": "assisted_review",
+        "notes": "Provisioning marked pending validation while network_ready is true."
+      }
+    },
+    {
+      "subscriber_id": "SUB-20005",
+      "context": {
+        "subscriber_id": "SUB-20005",
+        "brand": { "brand_id": "webde" },
+        "contract_type": "postpaid",
+        "account_status": "active",
+        "billing_ok": true,
+        "sim_status": "active",
+        "provisioning_state": "complete",
+        "network_ready": true,
+        "prior_migration_state": "none",
+        "device_model": "Samsung Galaxy S22",
+        "is_5g_capable": true,
+        "requires_sim_swap": false,
+        "open_complaint": false,
+        "recent_case_count": 4,
+        "escalation_flag": true
+      },
+      "expected": {
+        "scenario": "ambiguous_escalation_with_green_technical_signals",
+        "rules_outcome": "ambiguous",
+        "final_tier": "tier_2",
+        "agent_reviewed": true,
+        "agent_suggested_tier": "tier_2",
+        "reason_codes": ["ESCALATION_OPEN", "RECENT_CASE_ACTIVITY", "CONFLICTING_CARE_AND_PROVISIONING"],
+        "recommended_action": "block",
+        "notes": "Care escalation and recent case volume conflict with otherwise green technical readiness."
+      }
+    },
+    {
+      "subscriber_id": "SUB-30001",
+      "context": {
+        "subscriber_id": "SUB-30001",
+        "brand": { "brand_id": "1und1" },
+        "contract_type": "postpaid",
+        "account_status": "active",
+        "billing_ok": false,
+        "sim_status": "active",
+        "provisioning_state": "complete",
+        "network_ready": true,
+        "prior_migration_state": "none",
+        "device_model": "iPhone 12",
+        "is_5g_capable": true,
+        "requires_sim_swap": false,
+        "open_complaint": false,
+        "recent_case_count": 1,
+        "escalation_flag": false
+      },
+      "expected": {
+        "scenario": "tier_2_billing_block",
+        "rules_outcome": "tier_2",
+        "final_tier": "tier_2",
+        "agent_reviewed": false,
+        "reason_codes": ["BILLING_NOT_OK"],
+        "recommended_action": "block",
+        "notes": "Outstanding billing issue blocks migration."
+      }
+    },
+    {
+      "subscriber_id": "SUB-30002",
+      "context": {
+        "subscriber_id": "SUB-30002",
+        "brand": { "brand_id": "drillisch" },
+        "contract_type": "prepaid",
+        "account_status": "active",
+        "billing_ok": true,
+        "sim_status": "active",
+        "provisioning_state": "complete",
+        "network_ready": true,
+        "prior_migration_state": "failed",
+        "device_model": "Samsung Galaxy S21",
+        "is_5g_capable": true,
+        "requires_sim_swap": false,
+        "open_complaint": false,
+        "recent_case_count": 2,
+        "escalation_flag": false
+      },
+      "expected": {
+        "scenario": "tier_2_prior_migration_failed",
+        "rules_outcome": "tier_2",
+        "final_tier": "tier_2",
+        "agent_reviewed": false,
+        "reason_codes": ["PRIOR_MIGRATION_FAILED"],
+        "recommended_action": "retry_later",
+        "notes": "Previous migration attempt failed; subscriber needs remediation first."
+      }
+    },
+    {
+      "subscriber_id": "SUB-30003",
+      "context": {
+        "subscriber_id": "SUB-30003",
+        "brand": { "brand_id": "1und1" },
+        "contract_type": "postpaid",
+        "account_status": "suspended",
+        "billing_ok": true,
+        "sim_status": "suspended",
+        "provisioning_state": "complete",
+        "network_ready": false,
+        "prior_migration_state": "none",
+        "device_model": "Huawei P30",
+        "is_5g_capable": false,
+        "requires_sim_swap": false,
+        "open_complaint": true,
+        "recent_case_count": 3,
+        "escalation_flag": false
+      },
+      "expected": {
+        "scenario": "tier_2_account_suspended",
+        "rules_outcome": "tier_2",
+        "final_tier": "tier_2",
+        "agent_reviewed": false,
+        "reason_codes": ["ACCOUNT_SUSPENDED", "SIM_NOT_ACTIVE", "DEVICE_NOT_5G_CAPABLE"],
+        "recommended_action": "block",
+        "notes": "Suspended account and SIM are hard blocks before any migration work."
+      }
+    },
+    {
+      "subscriber_id": "SUB-30004",
+      "context": {
+        "subscriber_id": "SUB-30004",
+        "brand": { "brand_id": "webde" },
+        "contract_type": "business",
+        "account_status": "active",
+        "billing_ok": true,
+        "sim_status": "active",
+        "provisioning_state": "in_progress",
+        "network_ready": false,
+        "prior_migration_state": "in_progress",
+        "device_model": "iPhone 15",
+        "is_5g_capable": true,
+        "requires_sim_swap": true,
+        "open_complaint": false,
+        "recent_case_count": 0,
+        "escalation_flag": false
+      },
+      "expected": {
+        "scenario": "tier_2_migration_already_in_progress",
+        "rules_outcome": "tier_2",
+        "final_tier": "tier_2",
+        "agent_reviewed": false,
+        "reason_codes": ["PRIOR_MIGRATION_IN_PROGRESS"],
+        "recommended_action": "retry_later",
+        "notes": "Migration is already underway; duplicate execution must be prevented."
+      }
+    }
+  ]
+}

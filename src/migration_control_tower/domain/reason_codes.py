@@ -1,0 +1,40 @@
+"""Centralized reason codes used by rules, agent, and decision outputs."""
+
+from enum import Enum
+
+
+class ReasonCode(str, Enum):
+    """Stable reason codes for eligibility decisioning."""
+
+    # Account / billing
+    ACCOUNT_INACTIVE = "ACCOUNT_INACTIVE"
+    ACCOUNT_SUSPENDED = "ACCOUNT_SUSPENDED"
+    BILLING_NOT_OK = "BILLING_NOT_OK"
+
+    # Provisioning / network
+    SIM_NOT_ACTIVE = "SIM_NOT_ACTIVE"
+    PROVISIONING_INCOMPLETE = "PROVISIONING_INCOMPLETE"
+    NETWORK_NOT_READY = "NETWORK_NOT_READY"
+    PRIOR_MIGRATION_IN_PROGRESS = "PRIOR_MIGRATION_IN_PROGRESS"
+    PRIOR_MIGRATION_FAILED = "PRIOR_MIGRATION_FAILED"
+
+    # Device
+    DEVICE_NOT_5G_CAPABLE = "DEVICE_NOT_5G_CAPABLE"
+    SIM_SWAP_REQUIRED = "SIM_SWAP_REQUIRED"
+
+    # Care
+    OPEN_COMPLAINT = "OPEN_COMPLAINT"
+    RECENT_CASE_ACTIVITY = "RECENT_CASE_ACTIVITY"
+    ESCALATION_OPEN = "ESCALATION_OPEN"
+
+    # Straight-through eligibility
+    ELIGIBILITY_CONFIRMED = "ELIGIBILITY_CONFIRMED"
+    AUTO_MIGRATE_READY = "AUTO_MIGRATE_READY"
+
+    # Ambiguous / conflicting signals (rules defer to agent; tier not predetermined)
+    MIXED_READINESS_SIGNALS = "MIXED_READINESS_SIGNALS"
+    CONFLICTING_CARE_AND_PROVISIONING = "CONFLICTING_CARE_AND_PROVISIONING"
+    PARTIAL_MIGRATION_READINESS = "PARTIAL_MIGRATION_READINESS"
+
+
+ALL_REASON_CODES: frozenset[ReasonCode] = frozenset(ReasonCode)
