@@ -1,3 +1,4 @@
+from __future__ import annotations
 import sys
 from pathlib import Path
 
@@ -10,7 +11,7 @@ if str(SRC) not in sys.path:
     
 """Streamlit demo UI for the 5G Migration Agent Control Tower."""
 
-from __future__ import annotations
+
 
 import streamlit as st
 
