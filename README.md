@@ -1,6 +1,10 @@
 # 5G Migration Agent Control Tower
 
-Local-first MVP of a decisioning layer for subscriber migration eligibility in a 5G migration program.
+Local-first MVP of a decisioning layer for subscriber migration eligibility in a 5G migration program.  
+
+## Live app
+
+Deployed app: [Open the Streaml itapp]([https://your-app-url-here](https://your-app-url-here))
 
 ## Problem
 
@@ -12,14 +16,16 @@ Subscriber eligibility and migration prioritization depend on signals spread acr
 Source adapters → Canonical context → Rules engine → [Agent for ambiguous cases] → Decision combiner → MiCC stub
 ```
 
-| Layer | Role |
-|-------|------|
-| **Input adapters** | Placeholder reads from Customer360, ProvisioningHub, DeviceRegistry, CareCaseHub |
-| **Context assembler** | Builds a canonical subscriber migration context |
-| **Rules engine** | Deterministic Tier 0 / Tier 2 classification for obvious cases |
-| **Eligibility review agent** | Reviews ambiguous cases only; may recommend Tier 0, 1, or 2 |
-| **Decision combiner** | Final tier, reason codes, confidence, action, summary |
-| **MiCC stub** | Simulates queue receipt and execution outcomes |
+
+| Layer                        | Role                                                                             |
+| ---------------------------- | -------------------------------------------------------------------------------- |
+| **Input adapters**           | Placeholder reads from Customer360, ProvisioningHub, DeviceRegistry, CareCaseHub |
+| **Context assembler**        | Builds a canonical subscriber migration context                                  |
+| **Rules engine**             | Deterministic Tier 0 / Tier 2 classification for obvious cases                   |
+| **Eligibility review agent** | Reviews ambiguous cases only; may recommend Tier 0, 1, or 2                      |
+| **Decision combiner**        | Final tier, reason codes, confidence, action, summary                            |
+| **MiCC stub**                | Simulates queue receipt and execution outcomes                                   |
+
 
 ## Tier logic
 
@@ -47,3 +53,4 @@ See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for module boundaries and imple
 - Brand as metadata with a future override hook
 - Local JSON/SQLite persistence only
 - No Docker or cloud dependencies required
+
