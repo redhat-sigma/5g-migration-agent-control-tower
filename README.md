@@ -4,8 +4,7 @@ Local-first MVP of a decisioning layer for subscriber migration eligibility in a
 
 ## Live app
 
-Deployed app: [Open the streamlit app]([https://5g-migration-agent-control-tower.streamlit.app/](https://5g-migration-agent-control-tower.streamlit.app/))
-
+Deployed app: [Open the streamlit app](https://5g-migration-agent-control-tower.streamlit.app/)
 ## Problem
 
 Subscriber eligibility and migration prioritization depend on signals spread across multiple internal systems. A rule engine alone is insufficient when cases fall into a gray zone with conflicting signals. This MVP centralizes decisioning logic in a dedicated layer rather than relying only on downstream migration tooling.
