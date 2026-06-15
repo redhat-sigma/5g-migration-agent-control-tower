@@ -4,7 +4,7 @@ Local-first MVP of a decisioning layer for subscriber migration eligibility in a
 
 ## Live app
 
-Deployed app: [Open the Streaml itapp]([https://your-app-url-here](https://your-app-url-here))
+Deployed app: [Open the streamlit app]([https://5g-migration-agent-control-tower.streamlit.app/](https://5g-migration-agent-control-tower.streamlit.app/))
 
 ## Problem
 
